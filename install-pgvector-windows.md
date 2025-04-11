@@ -77,6 +77,9 @@ After `sequelize.sync()`, run:
 ALTER TABLE mchatbot.domain_knowledge_embeddings
 ALTER COLUMN embedding_vector
 TYPE vector(1536) USING embedding_vector::vector;
+ALTER TABLE mchatbot.domain_knowledge_embeddings
+ADD CONSTRAINT unique_knowledge_source
+UNIQUE (knowledge_source_id, source_table);
 ```
 
 ### ✅ From now on:
